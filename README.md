@@ -2,6 +2,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 It is a technical test for Eurosport, you can find the main task [here](https://eurosportdigital.github.io/eurosport-web-developer-recruitment/).
 
+To run the project run the commands in the source folder `run npm i` and then `npm start`.
+
+Then, you can access to the project at [http://localhost:3000](http://localhost:3000).
+
 ## Available Scripts
 
 In the project directory, you can run:

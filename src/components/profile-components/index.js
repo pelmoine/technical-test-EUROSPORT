@@ -18,7 +18,7 @@ export default function Profile(props) {
   const [playerWeight, setPlayerWeight] = useState(0);
   const [totalWin, setTotalWin] = useState(0);
   const [totalLost, setTotalLost] = useState(0);
-  const [windowWidth, setWindowWidth] = useState(0);
+  const [windowWidth, setWindowWidth] = useState( typeof window !== "undefined" ? window.innerWidth : 0);
 
   function updateDimensions() {
     let newWindowWidth = typeof window !== "undefined" ? window.innerWidth : 0;
