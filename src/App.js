@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from 'react';
+import Profile from './components/profile-components'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+ export default function App() {
+   const [players, setPlayers] = useState([]);
 
-export default App;
+   async function getPlayers() {
+     const response = await fetch(
+         `https://eurosportdigital.github.io/eurosport-web-developer-recruitment/headtohead.json`);
+     response.json()
+     .then(json => setPlayers(json.players))
+     .catch(err => console.error("error during parsing to json : ", err));
+   }
+
+   useEffect(() => {
+       getPlayers();
+   },[]);
+
+
+   return (
+       <div style={styles.app}>
+         {players.map(( player, index) =>
+           <Profile key={index} player={player}/>
+         )}
+       </div>
+   );
+ }
+
+const styles = {
+  app : {
+    backgroundColor: '#fff',
+    height: '100vh',
+    width: '100vw',
+    color: 'white',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+  }
+};
